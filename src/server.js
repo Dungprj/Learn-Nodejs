@@ -11,12 +11,17 @@ const app = express(); //app express
 const port = process.env.PORT || 8888; //port
 const hostname = process.env.HOST_NAME;
 
+//config req.body
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 //config template engine
 configViewEngine(app);
 
 //khai bao routes
 
 app.use('/', webRouters);
+
 app.listen(port, hostname, () => {
     console.log(`Example app listening on port ${port}`);
 });
